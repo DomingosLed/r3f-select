@@ -16,6 +16,8 @@ const nextConfig = {
   // compiler: {
   //   styledComponents: true,
   // },
+  transpilePackages: ['three'],
+
   reactStrictMode: true, // Recommended for the `pages` directory, default in `app`.
   images: {},
   webpack(config, { isServer }) {

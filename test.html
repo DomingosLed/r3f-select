@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Three.js Rectangular Frame</title>
+    <style>
+        body {
+            margin: 0;
+        }
+
+        canvas {
+            display: block;
+        }
+    </style>
+</head>
+
+<body>
+
+    <script type="module">
+        /* import * as THREE from './threejs.js';
+        import { OrbitControls } from './orbitcontrols.js'; */
+    import * as THREE from 'https://threejsfundamentals.org/threejs/resources/threejs/r122/build/three.module.js';
+    import { OrbitControls } from 'https://threejsfundamentals.org/threejs/resources/threejs/r122/examples/jsm/controls/OrbitControls.js';
+
+        // Create scene
+        const scene = new THREE.Scene();
+
+        // Create camera
+        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+        camera.position.z = 5;
+
+        // Create renderer
+        const renderer = new THREE.WebGLRenderer();
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        document.body.appendChild(renderer.domElement);
+
+        // Create rectangular frame (box)
+        const frameGeometry = new THREE.BoxGeometry(2, 2, 0.1);
+        const frameMaterial = new THREE.MeshBasicMaterial({ color: 0xffffff, wireframe: true });
+        const frame = new THREE.Mesh(frameGeometry, frameMaterial);
+        scene.add(frame);
+
+        frame.position.x = -2.2;
+
+       
+            const frame2 = new THREE.Mesh(frameGeometry, frameMaterial);
+
+            scene.add(frame2);
+
+    frame2.position.x = 4.2;
+
+             const glassGeometry = new THREE.BoxGeometry(2, 2, 0.1);
+                const glassMaterial = new THREE.MeshPhongMaterial({ color: 0xffffff, transparent: true, opacity: 0.5 });
+                const glass = new THREE.Mesh(glassGeometry, glassMaterial);
+                scene.add(glass);
+
+                const glass2 = new THREE.Mesh(glassGeometry, glassMaterial);
+                    scene.add(glass2);
+
+                    glass.position.x = -2;
+                    glass2.position.x = 4;
+
+        // Add lighting
+        const ambientLight = new THREE.AmbientLight(0xffffff, 0.5);
+        scene.add(ambientLight);
+
+        const directionalLight = new THREE.DirectionalLight(0xffffff, 0.5);
+        directionalLight.position.set(5, 5, 5);
+        scene.add(directionalLight);
+
+
+//WINDOW FRAME 
+
+    // Create window frame
+    const frameGeometry3 = new THREE.BoxGeometry(2, 2, 0.1);
+    const frameMaterial3 = new THREE.MeshPhongMaterial({ color: 0xffffff });
+    const frame3 = new THREE.Mesh(frameGeometry3, frameMaterial3);
+    scene.add(frame3);
+
+    // Create window glass (transparent box)
+    const glassGeometry3 = new THREE.BoxGeometry(1.8, 1.8, 0.01);
+    const glassMaterial3 = new THREE.MeshPhongMaterial({ color: 0x00ffff, transparent: true, opacity: 0.7 });
+    const glass3 = new THREE.Mesh(glassGeometry3, glassMaterial3);
+    scene.add(glass3);
+
+    // Position the window components
+    frame3.position.z = 0;
+    glass3.position.z = 0.06; 
+
+
+    const torusGeometry = new THREE.TorusGeometry(1, 0.2, 16, 100);
+    const torusMaterial = new THREE.MeshPhongMaterial({ color: 0xffffff });
+    const windowFrame = new THREE.Mesh(torusGeometry, torusMaterial);
+    scene.add(windowFrame);
+    windowFrame.position.y=-3
+    windowFrame.position.z = -2
+
+
+  // Create tube along square path (TubeGeometry)
+    const outerSize = 1.2;
+    const innerSize = 1.0;
+    const depth = 0.2;
+    const radialSegments = 32;
+    const tubularSegments = 32;
+
+    const squarePath = new THREE.Path();
+    squarePath.moveTo(-outerSize * 0.5, -outerSize * 0.5);
+    squarePath.lineTo(outerSize * 0.5, -outerSize * 0.5);
+    squarePath.lineTo(outerSize * 0.5, outerSize * 0.5);
+    squarePath.lineTo(-outerSize * 0.5, outerSize * 0.5);
+    squarePath.lineTo(-outerSize * 0.5, -outerSize * 0.5);
+
+    const tubeGeometry = new THREE.TubeGeometry(squarePath, tubularSegments, depth, radialSegments, false);
+
+    const tubeMaterial = new THREE.MeshPhongMaterial({ color: 0x808080, side: THREE.DoubleSide });
+    const tubeMesh = new THREE.Mesh(tubeGeometry, tubeMaterial);
+    scene.add(tubeMesh);
+
+    tubeMesh.position.y = 2
+        tubeMesh.position.z = -4
+
+
+        // Animation
+        const animate = () => {
+            requestAnimationFrame(animate);
+
+            // Rotate the frame
+            frame.rotation.x += 0.01;
+            frame.rotation.y += 0.01;
+
+             // Rotate the window frame
+            frame3.rotation.x += 0.01;
+            frame3.rotation.y += 0.01;
+
+
+
+            renderer.render(scene, camera);
+        };
+
+        // Handle window resize
+        window.addEventListener('resize', () => {
+            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize(window.innerWidth, window.innerHeight);
+        });
+
+        // Start animation
+        animate();
+    </script>
+
+</body>
+
+</html>
