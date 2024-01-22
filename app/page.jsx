@@ -1,8 +1,9 @@
 'use client'
 
 import dynamic from 'next/dynamic'
-import { Suspense,useState } from 'react'
+import { Suspense, useState } from 'react'
 import { Pvcwindow } from '@/components/GlassBrokenWindow'
+import { Pvcw } from '@/components/Pvcwindow'
 import {
   Select,
   useSelect,
@@ -36,7 +37,7 @@ const View = dynamic(() => import('@/components/canvas/View').then((mod) => mod.
 const Common = dynamic(() => import('@/components/canvas/View').then((mod) => mod.Common), { ssr: false })
 
 export default function Page() {
-   const [selected, setSelected] = useState([])
+  const [selected, setSelected] = useState([])
 
   return (
     <>
@@ -45,21 +46,20 @@ export default function Page() {
 
         <div className='relative my-12 h-48 w-full py-6 sm:w-1/2 md:mb-40'>
           <View orbit className='relative h-full sm:h-48 sm:w-full'>
-            <FirstLevaControl selected={selected}></FirstLevaControl>
+            <FirstLevaControl></FirstLevaControl>
             <Suspense fallback={null}>
               <group scale={[3, 2.5, 1]} dispose={null}>
                 <Select
                   box
                   multiple
                   onChange={setSelected}
-                   onClick={(e) => {
-                   
-                    console.log(e)
+                  onClick={(e) => {
                     setSelected(e.object.scale)
                     console.log(selected)
-                     debugger
-                  }} 
+                    debugger
+                  }}
                 >
+                  <Pvcw scale={2} position={[0, -1, 0]} />
                   <Pvcwindow scale={[3.33, 3.33, 3.33]} position={[1.82, -0.25, -0.2]} rotation={[0, 0, 1.58]} />
                   <Pvcwindow scale={2} position={[0, -1, 0]} />
                   <Pvcwindow scale={2} position={[1.025, -1, 0]} />
