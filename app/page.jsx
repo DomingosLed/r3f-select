@@ -60,9 +60,9 @@ export default function Page() {
                   }}
                 >
                   <Pvcw scale={2} position={[0, -1, 0]} />
-                  <Pvcwindow scale={[3.33, 3.33, 3.33]} position={[1.82, -0.25, -0.2]} rotation={[0, 0, 1.58]} />
+                  {/* <Pvcwindow scale={[3.33, 3.33, 3.33]} position={[1.82, -0.25, -0.2]} rotation={[0, 0, 1.58]} />
                   <Pvcwindow scale={2} position={[0, -1, 0]} />
-                  <Pvcwindow scale={2} position={[1.025, -1, 0]} />
+                  <Pvcwindow scale={2} position={[1.025, -1, 0]} /> */}
                 </Select>
               </group>
 
