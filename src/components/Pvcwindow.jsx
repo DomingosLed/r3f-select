@@ -12,12 +12,12 @@ export function Pvcw(props) {
   const [hovered, setHover] = useState(false)
   const selected = useSelect().map((sel) => sel.userData.store)
   const [store, materialProps] = useControls(selected, FirstLevaControl)
-  debugger
   const isSelected = !!selected.find((sel) => sel === store)
+console.log(selected)
 
   useCursor(hovered)
   return (
-    <group {...props} dispose={null} name='groupG0'>
+<group {...props} dispose={null} name='groupG0'>
       {/* <PerspectiveCamera name='camera' fov={40} near={10} far={1000} position={[10, 0, 50]} />
       <pointLight intensity={10} position={[100, 50, 100]} rotation={[-Math.PI / 2, 0, 0]} /> */}
 
@@ -48,27 +48,32 @@ export function Pvcw(props) {
               material={nodes.Grip_02.material}
               onPointerEnter={() => setShiny(true)}
               onPointerLeave={() => setShiny(false)}
+              onPointerOver={(e) => (e.stopPropagation(), setHover(true))}
+              onPointerOut={(e) => setHover(false)}
             >
               <Edges visible={isSelected} scale={1.1} renderOrder={1000}>
                 <meshBasicMaterial transparent color='#333' depthTest={false} />
               </Edges>
               <meshPhongMaterial color={shiny ? 0xff00ff : 0xffffff} />
             </mesh>
-          </group>
-          <mesh
-            //userData={{ store }}
-            geometry={nodes.Frame_02_2.geometry}
-            material={nodes.Frame_02_2.material}
-            position={[-11.015, 0, -0.93]}
-            name='groupt1'
-           /*  onPointerEnter={() => setShiny(true)}
-            onPointerLeave={() => setShiny(false)} */
-          >
-            <Edges visible={isSelected} scale={1.1} renderOrder={1000}>
-              <meshBasicMaterial transparent color='#333' depthTest={false} />
-            </Edges>
-            <meshPhongMaterial color={shiny ? 0xff00ff : 0xffffff} />
-          </mesh>
+         
+            <mesh
+              userData={{ store }}
+              geometry={nodes.Frame_02_2.geometry}
+              material={nodes.Frame_02_2.material}
+              position={[-11.015, 0, -0.93]}
+              name='groupt1'
+              onPointerEnter={() => setShiny(true)}
+              onPointerLeave={() => setShiny(false)}
+              onPointerOver={(e) => (e.stopPropagation(), setHover(true))}
+              onPointerOut={(e) => setHover(false)}
+            >
+              <Edges visible={isSelected} scale={1.1} renderOrder={1000}>
+                <meshBasicMaterial transparent color='#333' depthTest={false} />
+              </Edges>
+              <meshPhongMaterial color={shiny ? 0xff00ff : 0xffffff} />
+            </mesh>
+</group>
           <mesh
             userData={{ store }}
             geometry={nodes.Fused_Gaskets_01.geometry}
@@ -77,6 +82,8 @@ export function Pvcw(props) {
             name='groupt2'
             onPointerEnter={() => setShiny(true)}
             onPointerLeave={() => setShiny(false)}
+            onPointerOver={(e) => (e.stopPropagation(), setHover(true))}
+            onPointerOut={(e) => setHover(false)}
           >
             <Edges visible={isSelected} scale={1.1} renderOrder={1000}>
               <meshBasicMaterial transparent color='#333' depthTest={false} />
@@ -91,6 +98,8 @@ export function Pvcw(props) {
             name='groupt3'
             onPointerEnter={() => setShiny(true)}
             onPointerLeave={() => setShiny(false)}
+            onPointerOver={(e) => (e.stopPropagation(), setHover(true))}
+            onPointerOut={(e) => setHover(false)}
           >
             <Edges visible={isSelected} scale={1.1} renderOrder={1000}>
               <meshBasicMaterial transparent color='#333' depthTest={false} />
@@ -106,6 +115,8 @@ export function Pvcw(props) {
             name='groupt4'
             onPointerEnter={() => setShiny(true)}
             onPointerLeave={() => setShiny(false)}
+            onPointerOver={(e) => (e.stopPropagation(), setHover(true))}
+            onPointerOut={(e) => setHover(false)}
           >
             <Edges visible={isSelected} scale={1.1} renderOrder={1000}>
               <meshBasicMaterial transparent color='#333' depthTest={false} />
@@ -121,6 +132,8 @@ export function Pvcw(props) {
             name='groupt5'
             onPointerEnter={() => setShiny(true)}
             onPointerLeave={() => setShiny(false)}
+            onPointerOver={(e) => (e.stopPropagation(), setHover(true))}
+            onPointerOut={(e) => setHover(false)}
           >
             <Edges visible={isSelected} scale={1.1} renderOrder={1000}>
               <meshBasicMaterial transparent color='#333' depthTest={false} />
@@ -136,6 +149,8 @@ export function Pvcw(props) {
             name='groupt6'
             onPointerEnter={() => setShiny(true)}
             onPointerLeave={() => setShiny(false)}
+            onPointerOver={(e) => (e.stopPropagation(), setHover(true))}
+            onPointerOut={(e) => setHover(false)}
           >
             <Edges visible={isSelected} scale={1.1} renderOrder={1000}>
               <meshBasicMaterial transparent color='#333' depthTest={false} />
@@ -151,6 +166,8 @@ export function Pvcw(props) {
             name='groupt7'
             onPointerEnter={() => setShiny(true)}
             onPointerLeave={() => setShiny(false)}
+            onPointerOver={(e) => (e.stopPropagation(), setHover(true))}
+            onPointerOut={(e) => setHover(false)}
           >
             <Edges visible={isSelected} scale={1.1} renderOrder={1000}>
               <meshBasicMaterial transparent color='#333' depthTest={false} />
@@ -166,6 +183,8 @@ export function Pvcw(props) {
             name='groupt8'
             onPointerEnter={() => setShiny(true)}
             onPointerLeave={() => setShiny(false)}
+            onPointerOver={(e) => (e.stopPropagation(), setHover(true))}
+            onPointerOut={(e) => setHover(false)}
           >
             <Edges visible={isSelected} scale={1.1} renderOrder={1000}>
               <meshBasicMaterial transparent color='#333' depthTest={false} />
@@ -181,6 +200,8 @@ export function Pvcw(props) {
             name='groupt9'
             onPointerEnter={() => setShiny(true)}
             onPointerLeave={() => setShiny(false)}
+            onPointerOver={(e) => (e.stopPropagation(), setHover(true))}
+            onPointerOut={(e) => setHover(false)}
           >
             <Edges visible={isSelected} scale={1.1} renderOrder={1000}>
               <meshBasicMaterial transparent color='#333' depthTest={false} />
@@ -196,6 +217,8 @@ export function Pvcw(props) {
             name='groupt10'
             onPointerEnter={() => setShiny(true)}
             onPointerLeave={() => setShiny(false)}
+            onPointerOver={(e) => (e.stopPropagation(), setHover(true))}
+            onPointerOut={(e) => setHover(false)}
           >
             <Edges visible={isSelected} scale={1.1} renderOrder={1000}>
               <meshBasicMaterial transparent color='#333' depthTest={false} />
@@ -211,105 +234,127 @@ export function Pvcw(props) {
             name='groupt11'
             onPointerEnter={() => setShiny(true)}
             onPointerLeave={() => setShiny(false)}
+            onPointerOver={(e) => (e.stopPropagation(), setHover(true))}
+            onPointerOut={(e) => setHover(false)}
           >
             <Edges visible={isSelected} scale={1.1} renderOrder={1000}>
               <meshBasicMaterial transparent color='#333' depthTest={false} />
             </Edges>
             <meshPhongMaterial color={shiny ? 0xff00ff : 0xffffff} />
           </mesh>
-          <mesh
-           // userData={{ store }}
-            geometry={nodes.Objekt_01.geometry}
-            material={nodes.Objekt_01.material}
-            position={[-11.012, 0.001, -1.243]}
-            name='groupt12'
-            /* onPointerEnter={() => setShiny(true)}
-            onPointerLeave={() => setShiny(false)} */
-          >
-            {/* <Edges visible={isSelected} scale={1.1} renderOrder={1000}>
-              <meshBasicMaterial transparent color='#333' depthTest={false} />
-            </Edges>
-            <meshPhongMaterial color={shiny ? 0xff00ff : 0xffffff} /> */}
-          </mesh>
-          <mesh
-            //userData={{ store }}
-            geometry={nodes.Objekt_02.geometry}
-            material={nodes.Objekt_02.material}
-            position={[-11.012, 0.001, -0.729]}
-            name='groupt13'
-            /* onPointerEnter={() => setShiny(true)}
-            onPointerLeave={() => setShiny(false)} */
-          >
-            {/* <Edges visible={isSelected} scale={1.1} renderOrder={1000}>
-              <meshBasicMaterial transparent color='#333' depthTest={false} />
-            </Edges>
-            <meshPhongMaterial color={shiny ? 0xff00ff : 0xffffff} /> */}
-          </mesh>
-          <mesh
-            //userData={{ store }}
-            geometry={nodes.Thermal_Glass_01.geometry}
-            material={nodes.Thermal_Glass_01.material}
-            position={[-11.011, 0.006, -1.5]}
-            name='groupt14'
-            /* onPointerEnter={() => setShiny(true)}
-            onPointerLeave={() => setShiny(false)} */
-          >
-            <Edges visible={isSelected} scale={1.1} renderOrder={1000}>
-              <meshBasicMaterial transparent color='#333' depthTest={false} />
-            </Edges>
-            <meshPhongMaterial color={shiny ? 0xff00ff : 0xffffff} />
-          </mesh>
-          <mesh
-            //userData={{ store }}
-            geometry={nodes.Thermal_Glass_02.geometry}
-            material={nodes.Thermal_Glass_02.material}
-            position={[-11.011, 0.006, -0.987]}
-            name='groupt15'
-            /* onPointerEnter={() => setShiny(true)}
-            onPointerLeave={() => setShiny(false)} */
-          >
-            <Edges visible={isSelected} scale={1.1} renderOrder={1000}>
-              <meshBasicMaterial transparent color='#333' depthTest={false} />
-            </Edges>
-            <meshPhongMaterial color={shiny ? 0xff00ff : 0xffffff} />
-          </mesh>
-          <mesh
-            //userData={{ store }}
-            geometry={nodes.Thermal_Glass_03.geometry}
-            material={nodes.Thermal_Glass_03.material}
-            position={[-11.011, 0.006, -0.471]}
-            name='groupt16'
-           /*  onPointerEnter={() => setShiny(true)}
-            onPointerLeave={() => setShiny(false)} */
-          >
-            <Edges visible={isSelected} scale={1.1} renderOrder={1000}>
-              <meshBasicMaterial transparent color='#333' depthTest={false} />
-            </Edges>
-            <meshPhongMaterial color={shiny ? 0xff00ff : 0xffffff} />
-          </mesh>
+<group>
+            <mesh
+              userData={{ store }}
+              geometry={nodes.Objekt_01.geometry}
+              material={nodes.Objekt_01.material}
+              position={[-11.012, 0.001, -1.243]}
+              name='groupt12'
+              onPointerEnter={() => setShiny(true)}
+              onPointerLeave={() => setShiny(false)}
+              onPointerOver={(e) => (e.stopPropagation(), setHover(true))}
+              onPointerOut={(e) => setHover(false)}
+            >
+              <Edges visible={isSelected} scale={1.1} renderOrder={1000}>
+                <meshBasicMaterial transparent color='#333' depthTest={false} />
+              </Edges>
+              <meshPhongMaterial color={shiny ? 0xff00ff : 0xffffff} />
+            </mesh>
+            <mesh
+              userData={{ store }}
+              geometry={nodes.Objekt_02.geometry}
+              material={nodes.Objekt_02.material}
+              position={[-11.012, 0.001, -0.729]}
+              name='groupt13'
+              onPointerEnter={() => setShiny(true)}
+              onPointerLeave={() => setShiny(false)}
+              onPointerOver={(e) => (e.stopPropagation(), setHover(true))}
+              onPointerOut={(e) => setHover(false)}
+            >
+              <Edges visible={isSelected} scale={1.1} renderOrder={1000}>
+                <meshBasicMaterial transparent color='#333' depthTest={false} />
+              </Edges>
+              <meshPhongMaterial color={shiny ? 0xff00ff : 0xffffff} />
+            </mesh>
+          </group>
+          <group>
+            <mesh
+              userData={{ store }}
+              geometry={nodes.Thermal_Glass_01.geometry}
+              material={nodes.Thermal_Glass_01.material}
+              position={[-11.011, 0.006, -1.5]}
+              name='groupt14'
+              onPointerEnter={() => setShiny(true)}
+              onPointerLeave={() => setShiny(false)}
+              onPointerOver={(e) => (e.stopPropagation(), setHover(true))}
+              onPointerOut={(e) => setHover(false)}
+            >
+              <Edges visible={isSelected} scale={1.1} renderOrder={1000}>
+                <meshBasicMaterial transparent color='#333' depthTest={false} />
+              </Edges>
+              <meshPhongMaterial color={shiny ? 0xff00ff : 0xffffff} />
+            </mesh>
+            <mesh
+              userData={{ store }}
+              geometry={nodes.Thermal_Glass_02.geometry}
+              material={nodes.Thermal_Glass_02.material}
+              position={[-11.011, 0.006, -0.987]}
+              name='groupt15'
+              onPointerEnter={() => setShiny(true)}
+              onPointerLeave={() => setShiny(false)}
+              onPointerOver={(e) => (e.stopPropagation(), setHover(true))}
+              onPointerOut={(e) => setHover(false)}
+            >
+              <Edges visible={isSelected} scale={1.1} renderOrder={1000}>
+                <meshBasicMaterial transparent color='#333' depthTest={false} />
+              </Edges>
+              <meshPhongMaterial color={shiny ? 0xff00ff : 0xffffff} />
+            </mesh>
+            <mesh
+              userData={{ store }}
+              geometry={nodes.Thermal_Glass_03.geometry}
+              material={nodes.Thermal_Glass_03.material}
+              position={[-11.011, 0.006, -0.471]}
+              name='groupt16'
+              onPointerEnter={() => setShiny(true)}
+              onPointerLeave={() => setShiny(false)}
+              onPointerOver={(e) => (e.stopPropagation(), setHover(true))}
+              onPointerOut={(e) => setHover(false)}
+            >
+              <Edges visible={isSelected} scale={1.1} renderOrder={1000}>
+                <meshBasicMaterial transparent color='#333' depthTest={false} />
+              </Edges>
+              <meshPhongMaterial color={shiny ? 0xff00ff : 0xffffff} />
+            </mesh>
+         </group>
         </group>
+        <group>
+          <mesh
+            userData={{ store }}
+            geometry={nodes.Frame_01_2.geometry}
+            material={nodes.Frame_01_2.material}
+            name='groupt1'
+            onPointerEnter={() => setShiny(true)}
+            onPointerLeave={() => setShiny(false)}
+            onPointerOver={(e) => (e.stopPropagation(), setHover(true))}
+            onPointerOut={(e) => setHover(false)}
+          >
+            <Edges visible={isSelected} scale={1.1} renderOrder={1000}>
+              <meshBasicMaterial transparent color='#333' depthTest={false} />
+            </Edges>
+            <meshPhongMaterial color={shiny ? 0xff00ff : 0xffffff} />
+          </mesh>
+       </group>
         <mesh
-          //userData={{ store }}
-          geometry={nodes.Frame_01_2.geometry}
-          material={nodes.Frame_01_2.material}
-          name='groupt1'
-          /* onPointerEnter={() => setShiny(true)}
-          onPointerLeave={() => setShiny(false)} */
-        >
-          <Edges visible={isSelected} scale={1.1} renderOrder={1000}>
-            <meshBasicMaterial transparent color='#333' depthTest={false} />
-          </Edges>
-          <meshPhongMaterial color={shiny ? 0xff00ff : 0xffffff} />
-        </mesh>
-        <mesh
-          //userData={{ store }}
+          userData={{ store }}
           geometry={nodes.Fused_Gaskets_04.geometry}
           material={nodes.Fused_Gaskets_04.material}
           position={[0, 0.001, -0.71]}
           rotation={[-Math.PI, 0, -Math.PI]}
           name='groupt18'
-          /* onPointerEnter={() => setShiny(true)}
-          onPointerLeave={() => setShiny(false)} */
+          onPointerEnter={() => setShiny(true)}
+          onPointerLeave={() => setShiny(false)}
+          onPointerOver={(e) => (e.stopPropagation(), setHover(true))}
+          onPointerOut={(e) => setHover(false)}
         >
           <Edges visible={isSelected} scale={1.1} renderOrder={1000}>
             <meshBasicMaterial transparent color='#333' depthTest={false} />
@@ -325,6 +370,8 @@ export function Pvcw(props) {
           name='groupt19'
           onPointerEnter={() => setShiny(true)}
           onPointerLeave={() => setShiny(false)}
+          onPointerOver={(e) => (e.stopPropagation(), setHover(true))}
+          onPointerOut={(e) => setHover(false)}
         >
           <Edges visible={isSelected} scale={1.1} renderOrder={1000}>
             <meshBasicMaterial transparent color='#333' depthTest={false} />
@@ -340,14 +387,16 @@ export function Pvcw(props) {
           name='groupt20'
           onPointerEnter={() => setShiny(true)}
           onPointerLeave={() => setShiny(false)}
+          onPointerOver={(e) => (e.stopPropagation(), setHover(true))}
+          onPointerOut={(e) => setHover(false)}
         >
           <Edges visible={isSelected} scale={1.1} renderOrder={1000}>
             <meshBasicMaterial transparent color='#333' depthTest={false} />
           </Edges>
           <meshPhongMaterial color={shiny ? 0xff00ff : 0xffffff} />
         </mesh>
-      </group>
-    </group>
+     </group>   
+</group>
   )
 }
 

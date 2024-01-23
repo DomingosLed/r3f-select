@@ -51,8 +51,8 @@ export default function Page() {
                 <Select
                   box
                   multiple
-                  onChange={setSelected}
-                  /* onClick={(e) => {
+                  onChange={setSelected}     
+                 /* onClick={(e) => {
                     e.stopPropagation
                     debugger
                     setSelected(e.object)
