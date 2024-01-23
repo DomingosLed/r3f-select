@@ -38,7 +38,6 @@ const Common = dynamic(() => import('@/components/canvas/View').then((mod) => mo
 
 export default function Page() {
   const [selected, setSelected] = useState([])
-
   return (
     <>
       <div className='mx-auto flex w-full flex-col flex-wrap items-center p-12 md:flex-row  lg:w-4/5'>
@@ -53,16 +52,15 @@ export default function Page() {
                   box
                   multiple
                   onChange={setSelected}
-                  onClick={(e) => {
-                    setSelected(e.object.scale)
+                  /* onClick={(e) => {
+                    e.stopPropagation
+                    debugger
+                    setSelected(e.object)
                     console.log(selected)
                     debugger
-                  }}
+                  }} */
                 >
                   <Pvcw scale={2} position={[0, -1, 0]} />
-                  {/* <Pvcwindow scale={[3.33, 3.33, 3.33]} position={[1.82, -0.25, -0.2]} rotation={[0, 0, 1.58]} />
-                  <Pvcwindow scale={2} position={[0, -1, 0]} />
-                  <Pvcwindow scale={2} position={[1.025, -1, 0]} /> */}
                 </Select>
               </group>
 
