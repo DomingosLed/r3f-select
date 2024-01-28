@@ -4,6 +4,7 @@ import dynamic from 'next/dynamic'
 import { Suspense, useState } from 'react'
 import { Pvcwindow } from '@/components/GlassBrokenWindow'
 import { Pvcw } from '@/components/Pvcwindow'
+import { Model } from '@/components/Windowwithmeshesscaled3'
 import {
   Select,
   useSelect,
@@ -40,35 +41,20 @@ export default function Page() {
   const [selected, setSelected] = useState([])
   return (
     <>
-      <div className='mx-auto flex w-full flex-col flex-wrap items-center p-12 md:flex-row  lg:w-4/5'>
-        {/* first row */}
+      {/* first row */}
 
-        <div className='relative my-12 h-48 w-full py-6 sm:w-1/2 md:mb-40'>
-          <View orbit className='relative h-full sm:h-48 sm:w-full'>
-            <FirstLevaControl></FirstLevaControl>
-            <Suspense fallback={null}>
-              <group scale={[3, 2.5, 1]} dispose={null}>
-                <Select
-                  box
-                  multiple
-                  onChange={setSelected}     
-                 /* onClick={(e) => {
-                    e.stopPropagation
-                    debugger
-                    setSelected(e.object)
-                    console.log(selected)
-                    debugger
-                  }} */
-                >
-                  <Pvcw scale={2} position={[0, -1, 0]} />
-                </Select>
-              </group>
+      <View orbit className='relative h-full :w-full'>
+        <FirstLevaControl></FirstLevaControl>
+        <Suspense fallback={null}>
+          <group scale={[3, 2.5, 1]} dispose={null}>
+            <Select box multiple onChange={setSelected}>
+              <Model scale={2} position={[0, -1, 0]} />
+            </Select>
+          </group>
 
-              <Common color={'lightblue'} />
-            </Suspense>
-          </View>
-        </div>
-      </div>
+          <Common color={'lightblue'} />
+        </Suspense>
+      </View>
     </>
   )
 }
